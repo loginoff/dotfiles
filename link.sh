@@ -13,7 +13,7 @@ fi
 FILES=".bashrc .vimrc .zshrc"
 for file in $FILES
 do
-    if [ -f ~/$file ]
+    if [ -f ~/$file -a ! -h ~/$file ]
     then
         mv -v ~/$file $BACKUP_DIR
     fi
