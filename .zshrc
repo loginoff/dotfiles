@@ -2,7 +2,12 @@
 HISTFILE=~/.histfile
 HISTSIZE=100000
 SAVEHIST=100000
+
+# Keybinds
 bindkey -v
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey '^R' history-incremental-search-backward
+
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/martinl/.zshrc'
