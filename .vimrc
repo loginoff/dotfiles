@@ -19,20 +19,57 @@ iabbrev @@ martin.loginov@gmail.com
 
 set background=dark
 
+" backups and stuff
+set nobackup
+set writebackup
+
+set undodir=~/.vim/undo
+set undofile
+
+"user interface
+set history=1000                " remember command mode history
+set laststatus=2                " always show status line
+set lazyredraw                  " don't update screen inside macros, etc
+set matchtime=2                 " ms to show the matching paren for showmatch
+set number                      " line numbers
+set ruler                       " show the cursor position all the time
+set showcmd                     " display incomplete commands
+set showmatch                   " show matching brackets while typing
+"set relativenumber              " line numbers spread out from 0
+"set cursorline                  " highlight current line
+set display=lastline,uhex       " show last line even if too long; use <xx>
+
+" regexes
+set incsearch                   " do incremental searching
+set ignorecase                  " useful more often than not
+set smartcase                   " case-sens when capital letters
+
 " Indents
-set tabstop=8 "sets tab stops to eight characters wide
-set expandtab "converts tabs to white space
-set softtabstop=4 "makes the Tab key indent by four spaces
-set shiftwidth=4 "sets the width for autoindents
+set autoindent                  " keep indenting on <CR>
+set shiftwidth=4                " one tab = four spaces (autoindent)
+set softtabstop=4               " one tab = four spaces (tab key)
+set expandtab                   " never use hard tabs
+set shiftround                  " only indent to multiples of shiftwidth
+set smarttab                    " DTRT when shiftwidth/softtabstop diverge
 
-"allows auto-indenting depending on file type
-filetype indent on
+filetype indent on              "allows auto-indenting depending on file type
 
-"enamble syntax highligting
-syntax on
+" GUI
+set ttymouse=xterm2             " force mouse support for screen
+set mouse=a                     " terminal mouse when possible
+set guifont=Source\ Code\ Pro\ 9    
+                                " nice fixedwidth font
 
-"enables line numbers
-set number
+set number                      " set line numbers
+syntax on                       "enamble syntax highligting
+
+" tab completion
+set wildmenu                    " show a menu of completions like zsh
+set wildmode=full               " complete longest common prefix first
+set wildignore+=.*.sw*,__pycache__,*.pyc
+                                " ignore junk files
+set complete-=i                 " don't try to tab-complete #included files
+"set completeopt-=preview        " preview window is super annoying
 
 "" Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc source %
@@ -40,11 +77,7 @@ autocmd! bufwritepost .vimrc source %
 " Better copy & paste
 set pastetoggle=<F3>
 set clipboard=unnamed
-"
-" " Mouse and backspace
-" set mouse=a
-" set bs=2
-"
+
 " Moving blocks of code and keep selection
 vnoremap < <gv
 vnoremap > >gv
