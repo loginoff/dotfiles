@@ -10,12 +10,19 @@ else
     mkdir -v $BACKUP_DIR
 fi
 
-FILES=".bashrc .vimrc .zshrc"
+#If we are invoked without arguments, link these files
+FILES=${@-".bashrc .vimrc .zshrc .tmux.conf"}
 for file in $FILES
 do
+    if [ ! -f $BASEDIR/$file ]
+    then
+        echo "No such file $file"
+        continue
+    fi
     if [ -f ~/$file -a ! -h ~/$file ]
     then
         mv -v ~/$file $BACKUP_DIR
+    else
+        ln -sv $BASEDIR/$file ~/$file
     fi
-    ln -s $BASEDIR/$file ~/$file
 done
