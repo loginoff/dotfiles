@@ -17,7 +17,6 @@ inoremap <c-l> <Right>
 iabbrev ssig --<CR>Martin Loginov<CR>martin.loginov@gmail.com<CR>skype:mart1nl<CR>
 iabbrev @@ martin.loginov@gmail.com
 
-set background=dark
 
 " backups and stuff
 set nobackup
@@ -61,7 +60,8 @@ set guifont=Source\ Code\ Pro\ 9
                                 " nice fixedwidth font
 
 set number                      " set line numbers
-syntax on                       "enamble syntax highligting
+syntax enable                   " enamble syntax highligting
+set background=dark
 
 " tab completion
 set wildmenu                    " show a menu of completions like zsh
@@ -86,27 +86,27 @@ vnoremap > >gv
 " This is for setting up Vundle
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " This is the Vundle package, which can be found on GitHub.
 " " For GitHub repos, you specify plugins using the
 " " 'user/repository' format
-Plugin 'gmarik/vundle'
-"
-" " We could also add repositories with a ".git" extension
+Plugin 'gmarik/Vundle.vim'
+
 Plugin 'scrooloose/nerdtree.git'
-map <F2> :NERDTreeToggle<CR>
-
-" " To get plugins from Vim Scripts, you can reference the plugin
-" " by name as it appears on the site
-Plugin 'Buffergator'
-
-Plugin 'saltstack/salt-vim'
 Plugin 'ivanov/vim-ipython'
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-"set laststatus=2
+Plugin 'bling/vim-airline'
+Plugin 'altercation/vim-colors-solarized'
 
 " " Now we can turn our filetype functionality back on
+call vundle#end()
 filetype plugin indent on
+
+" Plugin settings
+
+" NERDTree
+map <F2> :NERDTreeToggle<CR>
+
+" Airline
+let g:airline#extensions#tabline#enabled = 1
