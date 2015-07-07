@@ -7,11 +7,15 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 
+nnoremap <c-l> :bnext<CR>
+nnoremap <c-h> :bprevious<CR>
+
 inoremap <c-h> <Left>
 inoremap <c-j> <Up>
 inoremap <c-k> <Down>
 inoremap <c-l> <Right>
 
+"vnoremap " <esc>`<a"<esc>`>i"<esc>
 
 " Some test abreviations
 iabbrev ssig --<CR>Martin Loginov<CR>martin.loginov@gmail.com<CR>skype:mart1nl<CR>
@@ -98,6 +102,9 @@ Plugin 'scrooloose/nerdtree.git'
 Plugin 'ivanov/vim-ipython'
 Plugin 'bling/vim-airline'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'kien/ctrlp.vim'
+Plugin 'valloric/MatchTagAlways'
+Plugin 'tpope/vim-surround'
 
 " " Now we can turn our filetype functionality back on
 call vundle#end()
@@ -110,3 +117,6 @@ map <F2> :NERDTreeToggle<CR>
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
+
+syntax enable                   " enamble syntax highligting
+set background=dark
