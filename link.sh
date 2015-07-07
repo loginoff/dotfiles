@@ -11,7 +11,7 @@ else
 fi
 
 #If we are invoked without arguments, link these files
-FILES=${@-".bashrc .vimrc .zshrc .tmux.conf"}
+FILES=${@-".bashrc .vimrc .zshrc .tmux.conf .gitconfig"}
 for file in $FILES
 do
     if [ ! -f $BASEDIR/$file ]
@@ -22,7 +22,6 @@ do
     if [ -f ~/$file -a ! -h ~/$file ]
     then
         mv -v ~/$file $BACKUP_DIR
-    else
-        ln -sv $BASEDIR/$file ~/$file
     fi
+    ln -sv $BASEDIR/$file ~/$file
 done
