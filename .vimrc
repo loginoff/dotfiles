@@ -58,8 +58,8 @@ set smarttab                    " DTRT when shiftwidth/softtabstop diverge
 filetype indent on              "allows auto-indenting depending on file type
 
 " GUI
-set ttymouse=xterm2             " force mouse support for screen
-set mouse=a                     " terminal mouse when possible
+" set ttymouse=xterm2             " force mouse support for screen
+" set mouse=a                     " terminal mouse when possible
 set guifont=Source\ Code\ Pro\ 9    
                                 " nice fixedwidth font
 
