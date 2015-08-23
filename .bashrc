@@ -28,3 +28,43 @@ function sshf {
         ssh -N -L${1}:localhost:${1} blackbird
     fi
 }
+
+function duh {
+    if [[ ! "$1" = "" ]] && [[ ! -d $1 ]];
+    then
+        echo "Enter a directory!"
+        return
+    fi
+    du -sk ${1}/* | sort -nr | awk '
+        function bytes_to_readable(bytes) {
+            tb = bytes / (1024*1024*1024*1024)
+            if(tb >= 1){
+                printf "%.3fTB", tb
+                return
+            }
+
+            gb = bytes / (1024*1024*1024)
+            if(gb >= 1){
+                printf "%.3fGB", gb
+                return
+            }
+
+            mb = bytes / (1024*1024)
+            if(mb >= 1){
+                printf "%.3fMB", mb
+                return
+            }
+
+            kb = bytes / (1024)
+            if(kb >= 1){
+                printf "%.3fKB", kb
+                return
+            }
+
+            printf "%dB", bytes
+        }
+
+        {
+            print bytes_to_readable($1*1024),$2
+        }'
+}
