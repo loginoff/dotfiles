@@ -15,7 +15,8 @@ inoremap <c-j> <Up>
 inoremap <c-k> <Down>
 inoremap <c-l> <Right>
 
-"vnoremap " <esc>`<a"<esc>`>i"<esc>
+vnoremap " <esc>`>a"<esc>`<i"<esc>f"
+vnoremap ) <esc>`>a)<esc>`<i(<esc>f)
 
 " Some test abreviations
 iabbrev ssig --<CR>Martin Loginov<CR>martin.loginov@gmail.com<CR>skype:mart1nl<CR>
