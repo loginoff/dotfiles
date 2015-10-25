@@ -68,3 +68,14 @@ function duh {
             print bytes_to_readable($1*1024),$2
         }'
 }
+
+function dockerbash() {
+    if [ $1 = "" ]; then
+        echo "Enter a container name"
+        exit 1
+    else
+        docker exec -t -i $1 /bin/bash
+    fi
+}
+
+alias dockerclean='docker images -qf dangling=true | xargs docker rmi'
