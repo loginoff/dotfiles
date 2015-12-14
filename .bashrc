@@ -11,6 +11,7 @@ alias vi=vim
 alias ll="ls -la --color=auto"
 
 ################### ENV variables #####################
+export PATH=~/bin:$PATH
 export EDITOR=vim
 
 PS1='[\u@\h \W]\$ '

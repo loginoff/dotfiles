@@ -88,36 +88,20 @@ vnoremap < <gv
 vnoremap > >gv
 
 
-" This is for setting up Vundle
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.vim
+call plug#begin('~/.vim/plugged')
 
-" This is the Vundle package, which can be found on GitHub.
-" " For GitHub repos, you specify plugins using the
-" " 'user/repository' format
-Plugin 'gmarik/Vundle.vim'
+Plug 'ivanov/vim-ipython'
+Plug 'kien/ctrlp.vim'
+Plug 'fatih/vim-go'
 
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'ivanov/vim-ipython'
-Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'kien/ctrlp.vim'
-Plugin 'valloric/MatchTagAlways'
-Plugin 'tpope/vim-surround'
-
-" " Now we can turn our filetype functionality back on
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
 " Plugin settings
 
 " NERDTree
-map <F2> :NERDTreeToggle<CR>
-
-" Airline
-let g:airline#extensions#tabline#enabled = 1
+map <F2> :Lexplore<CR>
 
 syntax enable                   " enamble syntax highligting
 set background=dark
