@@ -22,6 +22,15 @@ vnoremap ) <esc>`>a)<esc>`<i(<esc>f)
 iabbrev ssig --<CR>Martin Loginov<CR>martin.loginov@gmail.com<CR>skype:mart1nl<CR>
 iabbrev @@ martin.loginov@gmail.com
 
+" Some commenting for different filetypes
+autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc>
+autocmd FileType javascript vnoremap <buffer> <leader>c I//<esc>
+autocmd FileType javascript iabbrev <buffer> {} {\n}<up>
+autocmd FileType python nnoremap <buffer> <leader>c I#<esc>
+autocmd FileType python vnoremap <buffer> <leader>c I#<esc>
+
+autocmd FileType go setlocal tabstop=4
+
 
 " backups and stuff
 set nobackup
