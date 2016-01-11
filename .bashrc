@@ -71,12 +71,25 @@ function duh {
 }
 
 function dockerbash() {
-    if [ $1 = "" ]; then
-        echo "Enter a container name"
-        exit 1
-    else
-        docker exec -t -i $1 /bin/bash
-    fi
+    case $# in
+        0)
+            echo "Enter at least the name of a container"
+            return 1
+            ;;
+        1)
+            docker exec -t -i $1 /bin/bash
+            ;;
+        3)
+            if [ ! "$2" = "-u" ]
+            then
+                echo "Use: dockerbash [containername] -u [user]"
+                return 1
+            fi
+            container=$1
+            user=$3
+            docker exec -ti -u $user $container /bin/bash
+            ;;
+    esac
 }
 
 alias dockerclean='docker images -qf dangling=true | xargs docker rmi'
