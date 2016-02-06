@@ -31,7 +31,7 @@ function sshf {
 }
 
 function duh {
-    if [[ ! "$1" = "" ]] && [[ ! -d $1 ]];
+    if [[ ! $# = 1 ]] || [[ ! -d $1 ]];
     then
         echo "Enter a directory!"
         return
@@ -66,7 +66,9 @@ function duh {
         }
 
         {
-            print bytes_to_readable($1*1024),$2
+            bytes=bytes_to_readable($1*1024);
+            $1="";
+            print bytes,$0
         }'
 }
 
@@ -90,6 +92,10 @@ function dockerbash() {
             docker exec -ti -u $user $container /bin/bash
             ;;
     esac
+}
+
+function docker-pid() {
+    docker inspect --format '{{ .State.Pid }}' "$@"
 }
 
 alias dockerclean='docker images -qf dangling=true | xargs docker rmi'
