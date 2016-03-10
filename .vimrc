@@ -17,12 +17,15 @@ inoremap <c-l> <Right>
 
 vnoremap " <esc>`>a"<esc>`<i"<esc>f"
 vnoremap ) <esc>`>a)<esc>`<i(<esc>f)
+vnoremap ] <esc>`>a]<esc>`<i[<esc>f]
 
 " Some test abreviations
 iabbrev ssig --<CR>Martin Loginov<CR>martin.loginov@gmail.com<CR>skype:mart1nl<CR>
 iabbrev @@ martin.loginov@gmail.com
 
 " Some commenting for different filetypes
+autocmd FileType clojure inoremap <buffer> () ()<Left>
+autocmd FileType clojure inoremap <buffer> [ []<Left>
 autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc>
 autocmd FileType javascript vnoremap <buffer> <leader>c I//<esc>
 autocmd FileType javascript iabbrev <buffer> {} {\n}<up>

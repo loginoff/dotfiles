@@ -99,3 +99,15 @@ function docker-pid() {
 }
 
 alias dockerclean='docker images -qf dangling=true | xargs docker rmi'
+
+function ignoredir() {
+    local DIR=${1:-$(pwd)}
+    if [ ! -d "$DIR" ];
+    then
+        echo $DIR is not a directory
+        return 1
+    fi
+
+    echo '*' >> $DIR/.gitignore
+    echo '!.gitignore' >> $DIR/.gitignore
+}
