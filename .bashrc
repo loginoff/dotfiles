@@ -16,6 +16,8 @@ export EDITOR=vim
 
 PS1='[\u@\h \W]\$ '
 
+################## Useful functions ###################
+
 function sshf {
     if [ $# -lt 1 ];
     then
@@ -36,7 +38,7 @@ function duh {
         echo "Enter a directory!"
         return
     fi
-    du -sk ${1}/* | sort -nr | awk '
+    du -sk ${1}/* | sort -n | awk '
         function bytes_to_readable(bytes) {
             tb = bytes / (1024*1024*1024*1024)
             if(tb >= 1){
@@ -111,3 +113,12 @@ function ignoredir() {
     echo '*' >> $DIR/.gitignore
     echo '!.gitignore' >> $DIR/.gitignore
 }
+
+################## History options ###################
+# Append to the history file, don't overwrite it
+shopt -s histappend
+
+# Huge history. Doesn't appear to slow things down, so why not?
+HISTSIZE=500000
+HISTFILESIZE=100000
+HISTTIMEFORMAT="%Y-%m-%d %T "

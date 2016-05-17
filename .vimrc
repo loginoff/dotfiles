@@ -28,12 +28,17 @@ autocmd FileType clojure inoremap <buffer> () ()<Left>
 autocmd FileType clojure inoremap <buffer> [ []<Left>
 autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc>
 autocmd FileType javascript vnoremap <buffer> <leader>c I//<esc>
-autocmd FileType javascript iabbrev <buffer> {} {\n}<up>
 autocmd FileType python nnoremap <buffer> <leader>c I#<esc>
 autocmd FileType python vnoremap <buffer> <leader>c I#<esc>
-
 autocmd FileType go setlocal tabstop=4
 
+nnoremap <c-b> :!go build<CR>
+
+augroup Elm
+  autocmd!
+  autocmd FileType elm setlocal shiftwidth=4 softtabstop=4 tabstop=4
+  autocmd BufWrite *.elm setlocal filetype=elm
+augroup END
 
 " backups and stuff
 set nobackup
@@ -106,6 +111,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'ivanov/vim-ipython'
 Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go'
+Plug 'elmcast/elm-vim'
 
 call plug#end()
 filetype plugin indent on
