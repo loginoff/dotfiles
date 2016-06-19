@@ -5,6 +5,11 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+# Disable the annoying terminal output stop function
+# This leaves Ctrl + S and Ctrl + Q free for binding in Vim for example
+stty stop ''
+stty start ''
+
 ################### Aliases #####################
 alias ls='ls --color=auto'
 alias vi=vim
