@@ -111,7 +111,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'ivanov/vim-ipython'
 Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go'
-Plug 'elmcast/elm-vim'
+Plug 'ervandew/supertab'
 
 call plug#end()
 filetype plugin indent on
