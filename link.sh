@@ -27,3 +27,5 @@ do
     #In case we have a file or no file
     [ -h ~/$file ] || ln -sv $BASEDIR/$file ~/$file
 done
+
+[ -d ~/.vim ] || cp -vr $BASEDIR/.vim ~/
