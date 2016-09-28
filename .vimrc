@@ -56,6 +56,8 @@ set writebackup
 set undodir=~/.vim/undo
 set undofile
 
+set hidden                      " Allow switching buffer without saving 
+
 "user interface
 set history=1000                " remember command mode history
 set laststatus=2                " always show status line
