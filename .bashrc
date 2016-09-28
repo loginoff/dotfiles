@@ -16,6 +16,8 @@ alias vi=vim
 alias ll="ls -la --color=auto"
 
 ################### ENV variables #####################
+export GOPATH=~/code/go/gopath
+export PATH=$GOPATH/bin:$PATH
 export PATH=~/bin:$PATH
 export EDITOR=vim
 

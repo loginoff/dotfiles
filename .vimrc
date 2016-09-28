@@ -7,14 +7,15 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 
-nnoremap <c-l> :bnext<CR>
-nnoremap <c-h> :bprevious<CR>
+nnoremap <leader>l :bnext<CR>
+nnoremap <leader>h :bprevious<CR>
 
 inoremap <c-h> <Left>
 inoremap <c-j> <Up>
 inoremap <c-k> <Down>
 inoremap <c-l> <Right>
 
+vnoremap ' <esc>`>a'<esc>`<i'<esc>f'
 vnoremap " <esc>`>a"<esc>`<i"<esc>f"
 vnoremap ) <esc>`>a)<esc>`<i(<esc>f)
 vnoremap ] <esc>`>a]<esc>`<i[<esc>f]
@@ -30,9 +31,17 @@ autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc>
 autocmd FileType javascript vnoremap <buffer> <leader>c I//<esc>
 autocmd FileType python nnoremap <buffer> <leader>c I#<esc>
 autocmd FileType python vnoremap <buffer> <leader>c I#<esc>
-autocmd FileType go setlocal tabstop=4
 
-nnoremap <c-b> :!go build<CR>
+augroup Go
+    autocmd!
+    autocmd FileType go set autowrite
+    autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+    autocmd FileType go nnoremap <buffer> <leader>b :GoBuild<CR>
+    autocmd FileType go nnoremap <buffer> <leader>r :GoRun<CR>
+    autocmd FileType go noremap <buffer> <C-n> :cnext<CR>
+    autocmd FileType go noremap <buffer> <leader>c :cclose<CR>
+
+augroup END
 
 augroup Elm
   autocmd!
@@ -112,6 +121,8 @@ Plug 'ivanov/vim-ipython'
 Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go'
 Plug 'ervandew/supertab'
+Plug 'bling/vim-bufferline'
+
 
 call plug#end()
 filetype plugin indent on
