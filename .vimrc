@@ -6,6 +6,8 @@ nnoremap <leader>b <c-b>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+" Search and replace
+nnoremap <Leader>s :%s//g<Left><Left>
 
 nnoremap <leader>l :bnext<CR>
 nnoremap <leader>h :bprevious<CR>
@@ -115,6 +117,7 @@ set clipboard=unnamed
 vnoremap < <gv
 vnoremap > >gv
 
+set background=dark
 
 set rtp+=~/.vim
 call plug#begin('~/.vim/plugged')
@@ -122,11 +125,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'ivanov/vim-ipython'
 Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go'
-Plug 'ervandew/supertab'
 Plug 'bling/vim-bufferline'
-
+Plug 'lambdatoast/elm.vim'
 
 call plug#end()
+
 filetype plugin indent on
 
 " Plugin settings
@@ -136,3 +139,5 @@ map <F2> :Lexplore<CR>
 
 syntax enable                   " enamble syntax highligting
 set background=dark
+highlight NonText ctermbg=none 
+highlight Normal guibg=NONE ctermbg=NONE
