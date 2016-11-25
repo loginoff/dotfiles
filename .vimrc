@@ -6,15 +6,18 @@ nnoremap <leader>b <c-b>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
+" Search and replace
+nnoremap <Leader>s :%s//g<Left><Left>
 
-nnoremap <c-l> :bnext<CR>
-nnoremap <c-h> :bprevious<CR>
+nnoremap <leader>l :bnext<CR>
+nnoremap <leader>h :bprevious<CR>
 
 inoremap <c-h> <Left>
 inoremap <c-j> <Up>
 inoremap <c-k> <Down>
 inoremap <c-l> <Right>
 
+vnoremap ' <esc>`>a'<esc>`<i'<esc>f'
 vnoremap " <esc>`>a"<esc>`<i"<esc>f"
 vnoremap ) <esc>`>a)<esc>`<i(<esc>f)
 vnoremap ] <esc>`>a]<esc>`<i[<esc>f]
@@ -30,9 +33,17 @@ autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc>
 autocmd FileType javascript vnoremap <buffer> <leader>c I//<esc>
 autocmd FileType python nnoremap <buffer> <leader>c I#<esc>
 autocmd FileType python vnoremap <buffer> <leader>c I#<esc>
-autocmd FileType go setlocal tabstop=4
 
-nnoremap <c-b> :!go build<CR>
+augroup Go
+    autocmd!
+    autocmd FileType go set autowrite
+    autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+    autocmd FileType go nnoremap <buffer> <leader>b :GoBuild<CR>
+    autocmd FileType go nnoremap <buffer> <leader>r :GoRun<CR>
+    autocmd FileType go noremap <buffer> <C-n> :cnext<CR>
+    autocmd FileType go noremap <buffer> <leader>c :cclose<CR>
+
+augroup END
 
 augroup Elm
   autocmd!
@@ -46,6 +57,8 @@ set writebackup
 
 set undodir=~/.vim/undo
 set undofile
+
+set hidden                      " Allow switching buffer without saving 
 
 "user interface
 set history=1000                " remember command mode history
@@ -104,6 +117,7 @@ set clipboard=unnamed
 vnoremap < <gv
 vnoremap > >gv
 
+set background=dark
 
 set rtp+=~/.vim
 call plug#begin('~/.vim/plugged')
@@ -111,9 +125,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'ivanov/vim-ipython'
 Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go'
-Plug 'ervandew/supertab'
+Plug 'bling/vim-bufferline'
+Plug 'lambdatoast/elm.vim'
 
 call plug#end()
+
 filetype plugin indent on
 
 " Plugin settings

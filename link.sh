@@ -14,14 +14,18 @@ fi
 FILES=${@-".bashrc .vimrc .zshrc .tmux.conf .gitconfig"}
 for file in $FILES
 do
-    if [ ! -f $BASEDIR/$file ]
-    then
+    [ -f $BASEDIR/$file ] || {
         echo "No such file $file"
         continue
-    fi
-    if [ -f ~/$file -a ! -h ~/$file ]
-    then
+    }
+
+    #The case where we have an actual dotfile, not link
+    [ -f ~/$file -a ! -h ~/$file ] && {
         mv -v ~/$file $BACKUP_DIR
-    fi
-    ln -sv $BASEDIR/$file ~/$file
+    }
+
+    #In case we have a file or no file
+    [ -h ~/$file ] || ln -sv $BASEDIR/$file ~/$file
 done
+
+[ -d ~/.vim ] || cp -vr $BASEDIR/.vim ~/
