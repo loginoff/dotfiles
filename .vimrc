@@ -123,3 +123,7 @@ map <F2> :Lexplore<CR>
 
 syntax enable                   " enamble syntax highligting
 set background=dark
+
+" vimdiff color scheme
+highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
+highlight DiffText cterm=none ctermfg=black ctermbg=Red gui=none guifg=bg guibg=Red
