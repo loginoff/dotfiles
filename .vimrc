@@ -51,6 +51,8 @@ augroup Elm
   autocmd BufWrite *.elm setlocal filetype=elm
 augroup END
 
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " backups and stuff
 set nobackup
 set writebackup
@@ -127,6 +129,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go'
 Plug 'bling/vim-bufferline'
 Plug 'lambdatoast/elm.vim'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
