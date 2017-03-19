@@ -1,6 +1,5 @@
 let mapleader = "\<Space>"
 inoremap jj <ESC>
-nnoremap <leader><leader> V
 nnoremap <leader>f <c-f>
 nnoremap <leader>b <c-b>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -11,6 +10,7 @@ nnoremap <Leader>s :%s//g<Left><Left>
 
 nnoremap <leader>l :bnext<CR>
 nnoremap <leader>h :bprevious<CR>
+nnoremap <leader>d :bdelete<CR>
 
 inoremap <c-h> <Left>
 inoremap <c-j> <Up>
@@ -60,7 +60,7 @@ set writebackup
 set undodir=~/.vim/undo
 set undofile
 
-set hidden                      " Allow switching buffer without saving 
+set hidden                      " Allow switching buffer without saving
 
 "user interface
 set history=1000                " remember command mode history
@@ -75,16 +75,21 @@ set showmatch                   " show matching brackets while typing
 "set cursorline                  " highlight current line
 set display=lastline,uhex       " show last line even if too long; use <xx>
 
-" regexes
+" Search
 set incsearch                   " do incremental searching
 set ignorecase                  " useful more often than not
 set smartcase                   " case-sens when capital letters
+set hlsearch                    " highlight matches
+
+" clear search highlight
+nnoremap <leader><leader> :nohlsearch<CR>
 
 " Indents
 set autoindent                  " keep indenting on <CR>
 set shiftwidth=4                " one tab = four spaces (autoindent)
-set softtabstop=4               " one tab = four spaces (tab key)
-set expandtab                   " never use hard tabs
+set tabstop=4                   " when VIM opens a file, it shows tabs as this many spaces
+set softtabstop=4               " number of spaces inserted when you hit TAB
+set expandtab                   " turn tabs into spaces
 set shiftround                  " only indent to multiples of shiftwidth
 set smarttab                    " DTRT when shiftwidth/softtabstop diverge
 
@@ -93,7 +98,7 @@ filetype indent on              "allows auto-indenting depending on file type
 " GUI
 " set ttymouse=xterm2             " force mouse support for screen
 " set mouse=a                     " terminal mouse when possible
-set guifont=Source\ Code\ Pro\ 9    
+set guifont=Source\ Code\ Pro\ 9
                                 " nice fixedwidth font
 
 set number                      " set line numbers
@@ -119,6 +124,14 @@ set clipboard=unnamed
 vnoremap < <gv
 vnoremap > >gv
 
+nnoremap <leader>i `[v`]        " highlight last inserted text
+
+" Folding
+set foldenable                  " enable folding
+set foldlevelstart=10           " open most folds by default
+set foldnestmax=10              " maximum nested folds
+set foldmethod=syntax           " help foldmethod
+
 set background=dark
 
 set rtp+=~/.vim
@@ -130,6 +143,7 @@ Plug 'fatih/vim-go'
 Plug 'bling/vim-bufferline'
 Plug 'lambdatoast/elm.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'ntpeters/vim-better-whitespace'
 
 call plug#end()
 
