@@ -23,6 +23,8 @@ vnoremap " <esc>`>a"<esc>`<i"<esc>f"
 vnoremap ) <esc>`>a)<esc>`<i(<esc>f)
 vnoremap ] <esc>`>a]<esc>`<i[<esc>f]
 
+vnoremap s :sort<CR>
+
 "---------------------- Misc ------------------------------------------
 set hidden                      " Allow switching buffer without saving
 
