@@ -5,7 +5,7 @@ inoremap jj <ESC>
 nnoremap <leader>f <c-f>
 
 nnoremap <leader>b <c-b>
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :edit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 
@@ -163,6 +163,8 @@ Plug 'fatih/vim-go'
 Plug 'bling/vim-bufferline'
 Plug 'hashivim/vim-terraform'
 Plug 'ntpeters/vim-better-whitespace'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 call plug#end()
 
@@ -170,13 +172,23 @@ filetype plugin indent on
 
 "---------------------- Plugin settings -------------------------------
 
-" NETRW
+"--------------- NETRW
 map <F2> :Lexplore<CR>
 
 "let g:netrw_banner=0        " disable annoying banner
 let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
+
+"--------------- vim-airline
+
+let g:airline_powerline_fonts = 1
+if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline_skip_empty_sections = 1
+let g:airline_theme='papercolor'
 
 "---------------------- vimdiff color sheme ---------------------------
 highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
