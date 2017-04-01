@@ -104,6 +104,16 @@ set background=dark
 set guifont=Source\ Code\ Pro\ 9
                                 " nice fixedwidth font
 
+"----------------------- Splits ---------------------------------------
+set splitbelow
+set splitright
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+
 "----------------------- Search ---------------------------------------
 set incsearch                   " do incremental searching
 set ignorecase                  " useful more often than not
