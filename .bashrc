@@ -20,6 +20,7 @@ export GOPATH=~/code/go/gopath
 export PATH=$GOPATH/bin:$PATH
 export PATH=~/bin:$PATH
 export EDITOR=vim
+export TERM=screen-256color
 
 PS1='[\u@\h \W]\$ '
 

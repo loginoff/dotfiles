@@ -1,12 +1,13 @@
+"----------------------- Keybindings ----------------------------------
+
 let mapleader = "\<Space>"
 inoremap jj <ESC>
 nnoremap <leader>f <c-f>
+
 nnoremap <leader>b <c-b>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-" Search and replace
-nnoremap <Leader>s :%s//g<Left><Left>
 
 nnoremap <leader>l :bnext<CR>
 nnoremap <leader>h :bprevious<CR>
@@ -22,9 +23,29 @@ vnoremap " <esc>`>a"<esc>`<i"<esc>f"
 vnoremap ) <esc>`>a)<esc>`<i(<esc>f)
 vnoremap ] <esc>`>a]<esc>`<i[<esc>f]
 
+"---------------------- Misc ------------------------------------------
+set hidden                      " Allow switching buffer without saving
+
+"" Automatic reloading of .vimrc
+autocmd! bufwritepost .vimrc source %
+
+" Better copy & paste
+set pastetoggle=<F3>
+set clipboard=unnamed
+
+" Moving blocks of code and keep selection
+vnoremap < <gv
+vnoremap > >gv
+
+nnoremap <leader>i `[v`]        " highlight last inserted text
+
 " Some test abreviations
 iabbrev ssig --<CR>Martin Loginov<CR>martin.loginov@gmail.com<CR>skype:mart1nl<CR>
 iabbrev @@ martin.loginov@gmail.com
+
+"---------------------- Filetype specific stuff -----------------------
+
+filetype indent on              "allows auto-indenting depending on file type
 
 " Some commenting for different filetypes
 autocmd FileType clojure inoremap <buffer> () ()<Left>
@@ -53,16 +74,17 @@ augroup END
 
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" backups and stuff
+"----------------------- Backups --------------------------------------
 set nobackup
 set writebackup
 
 set undodir=~/.vim/undo
 set undofile
 
-set hidden                      " Allow switching buffer without saving
 
-"user interface
+"---------------------- Usr interface ---------------------------------
+syntax enable                   " enamble syntax highligting
+set number                      " set line numbers
 set history=1000                " remember command mode history
 set laststatus=2                " always show status line
 set lazyredraw                  " don't update screen inside macros, etc
@@ -74,8 +96,15 @@ set showmatch                   " show matching brackets while typing
 "set relativenumber              " line numbers spread out from 0
 "set cursorline                  " highlight current line
 set display=lastline,uhex       " show last line even if too long; use <xx>
+set background=dark
 
-" Search
+" GUI
+" set ttymouse=xterm2             " force mouse support for screen
+" set mouse=a                     " terminal mouse when possible
+set guifont=Source\ Code\ Pro\ 9
+                                " nice fixedwidth font
+
+"----------------------- Search ---------------------------------------
 set incsearch                   " do incremental searching
 set ignorecase                  " useful more often than not
 set smartcase                   " case-sens when capital letters
@@ -84,7 +113,10 @@ set hlsearch                    " highlight matches
 " clear search highlight
 nnoremap <leader><leader> :nohlsearch<CR>
 
-" Indents
+" Search and replace
+nnoremap <Leader>s :%s//g<Left><Left>
+
+"---------------------- indents ---------------------------------------
 set autoindent                  " keep indenting on <CR>
 set shiftwidth=4                " one tab = four spaces (autoindent)
 set tabstop=4                   " when VIM opens a file, it shows tabs as this many spaces
@@ -93,19 +125,9 @@ set expandtab                   " turn tabs into spaces
 set shiftround                  " only indent to multiples of shiftwidth
 set smarttab                    " DTRT when shiftwidth/softtabstop diverge
 
-filetype indent on              "allows auto-indenting depending on file type
 
-" GUI
-" set ttymouse=xterm2             " force mouse support for screen
-" set mouse=a                     " terminal mouse when possible
-set guifont=Source\ Code\ Pro\ 9
-                                " nice fixedwidth font
 
-set number                      " set line numbers
-syntax enable                   " enamble syntax highligting
-set background=dark
-
-" tab completion
+"---------------------- TAB completion --------------------------------
 set wildmenu                    " show a menu of completions like zsh
 set wildmode=full               " complete longest common prefix first
 set wildignore+=.*.sw*,__pycache__,*.pyc
@@ -113,35 +135,20 @@ set wildignore+=.*.sw*,__pycache__,*.pyc
 set complete-=i                 " don't try to tab-complete #included files
 "set completeopt-=preview        " preview window is super annoying
 
-"" Automatic reloading of .vimrc
-autocmd! bufwritepost .vimrc source %
 
-" Better copy & paste
-set pastetoggle=<F3>
-set clipboard=unnamed
-
-" Moving blocks of code and keep selection
-vnoremap < <gv
-vnoremap > >gv
-
-nnoremap <leader>i `[v`]        " highlight last inserted text
-
-" Folding
+"---------------------- Folding ---------------------------------------
 set foldenable                  " enable folding
 set foldlevelstart=10           " open most folds by default
 set foldnestmax=10              " maximum nested folds
 set foldmethod=syntax           " help foldmethod
 
-set background=dark
-
+"---------------------- Plugins ---------------------------------------
 set rtp+=~/.vim
 call plug#begin('~/.vim/plugged')
 
-Plug 'ivanov/vim-ipython'
 Plug 'kien/ctrlp.vim'
 Plug 'fatih/vim-go'
 Plug 'bling/vim-bufferline'
-Plug 'lambdatoast/elm.vim'
 Plug 'hashivim/vim-terraform'
 Plug 'ntpeters/vim-better-whitespace'
 
@@ -149,14 +156,11 @@ call plug#end()
 
 filetype plugin indent on
 
-" Plugin settings
+"---------------------- Plugin settings -------------------------------
 
 " NERDTree
 map <F2> :Lexplore<CR>
 
-syntax enable                   " enamble syntax highligting
-set background=dark
-
-" vimdiff color scheme
+"---------------------- vimdiff color sheme ---------------------------
 highlight DiffChange cterm=none ctermfg=black ctermbg=LightGreen gui=none guifg=bg guibg=LightGreen
 highlight DiffText cterm=none ctermfg=black ctermbg=Red gui=none guifg=bg guibg=Red
