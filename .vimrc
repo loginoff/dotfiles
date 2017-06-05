@@ -25,6 +25,8 @@ vnoremap ] <esc>`>a]<esc>`<i[<esc>f]
 
 vnoremap s :sort<CR>
 
+inoremap {} {}<ESC>i
+
 "---------------------- Misc ------------------------------------------
 set hidden                      " Allow switching buffer without saving
 
@@ -65,6 +67,9 @@ augroup Go
     autocmd FileType go nnoremap <buffer> <leader>r :GoRun<CR>
     autocmd FileType go noremap <buffer> <C-n> :cnext<CR>
     autocmd FileType go noremap <buffer> <leader>c :cclose<CR>
+    autocmd FileType go noremap <buffer> dg :GoDefPop<CR>
+    autocmd FileType go noremap <buffer> gh :GoDoc<CR>
+    autocmd FileType go noremap <buffer> gi :GoImports<CR>
 
 augroup END
 
