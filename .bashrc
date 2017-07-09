@@ -124,6 +124,25 @@ function ignoredir() {
     echo '!.gitignore' >> $DIR/.gitignore
 }
 
+function ssh-script() {
+    if [ $# -lt 2 ]
+        then
+        echo "Usage: ssh-script user@host [local_script.sh] arg1 arg2 ..."
+        return 1
+    fi
+
+    local host=$1
+    local localscript=$2
+    shift
+    shift
+    ssh $host "bash -s -- $@" < $localscript
+}
+
+function cast() {
+    castnow --myip 192.168.1.190 $@
+}
+
+
 ################## History options ###################
 # Append to the history file, don't overwrite it
 shopt -s histappend
