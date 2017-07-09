@@ -27,6 +27,9 @@ vnoremap s :sort<CR>
 
 inoremap {} {}<ESC>i
 
+vnoremap <leader>r :SlimuxREPLSendSelection<CR>
+nnoremap <leader>r :SlimuxREPLSendLine<CR>
+
 "---------------------- Misc ------------------------------------------
 set hidden                      " Allow switching buffer without saving
 
@@ -170,6 +173,7 @@ Plug 'hashivim/vim-terraform'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'epeli/slimux'
 
 call plug#end()
 
