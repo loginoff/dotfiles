@@ -11,7 +11,7 @@ nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
 
 nnoremap <leader>l :bnext<CR>
 nnoremap <leader>h :bprevious<CR>
-nnoremap <leader>d :bdelete<CR>
+nnoremap <c-d> :bdelete<CR>
 
 inoremap <c-h> <Left>
 inoremap <c-j> <Up>
@@ -29,6 +29,10 @@ inoremap {} {}<ESC>i
 
 vnoremap <leader>r :SlimuxREPLSendSelection<CR>
 nnoremap <leader>r :SlimuxREPLSendLine<CR>
+
+" Delete without losing yanked text
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
 
 "---------------------- Misc ------------------------------------------
 set hidden                      " Allow switching buffer without saving
