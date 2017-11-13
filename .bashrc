@@ -110,6 +110,10 @@ function docker-pid() {
     docker inspect --format '{{ .State.Pid }}' "$@"
 }
 
+function docker-entry() {
+    docker inspect --format 'Entry: {{.Config.Entrypoint}} CMD: {{.Config.Cmd}}' "$@"
+}
+
 alias dockerclean='docker images -qf dangling=true | xargs docker rmi'
 
 function ignoredir() {
