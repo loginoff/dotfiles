@@ -34,6 +34,9 @@ nnoremap <leader>r :SlimuxREPLSendLine<CR>
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 
+" Select SQL query (must begin with a comment line "--"
+nnoremap <c-e> /;<CR><s-v>?--<CR>
+
 "---------------------- Misc ------------------------------------------
 set hidden                      " Allow switching buffer without saving
 
@@ -178,6 +181,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'epeli/slimux'
+Plug 'lifepillar/pgsql.vim'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 

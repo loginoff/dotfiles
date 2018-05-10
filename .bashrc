@@ -15,17 +15,6 @@ alias ls='ls --color=auto'
 alias vi=vim
 alias ll="ls -la --color=auto"
 
-################### ENV variables #####################
-export GOPATH=~/code/go/gopath
-export PATH=$GOPATH/bin:$PATH
-export PATH=~/bin:$PATH
-export EDITOR=vim
-export TERM=xterm-256color
-# This breaks highlighting searches in less
-#export TERM=screen-256color
-
-PS1='[\u@\h \W]\$ '
-
 ################## Useful functions ###################
 
 function sshf {
@@ -155,3 +144,17 @@ shopt -s histappend
 HISTSIZE=500000
 HISTFILESIZE=100000
 HISTTIMEFORMAT="%Y-%m-%d %T "
+
+################### ENV variables #####################
+export GOPATH=~/code/go/gopath
+export PATH=$GOPATH/bin:$PATH
+export PATH=~/bin:$PATH
+export EDITOR=vim
+export TERM=xterm-256color
+# This breaks highlighting searches in less
+#export TERM=screen-256color
+
+PS1='[\u@\h \W]\$ '
+
+export ANDROID_HOME=/opt/android-sdk/
+export PATH=/opt/dart/flutter/bin:$PATH
