@@ -31,7 +31,8 @@
     co = checkout
     df = diff
     lg = log --oneline --graph --decorate
-    ls = log --stat --pretty=short --graph
+    ls = log --stat --pretty=medium --graph
+    dc = log -u -1 --stat
 
 [push]
     default = current
