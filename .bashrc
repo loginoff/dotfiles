@@ -37,7 +37,7 @@ function duh {
         echo "Enter a directory!"
         return
     fi
-    du -sk ${1}/* | sort -n | awk '
+    du -sk ${1}/* ${1}/.[!.]* | sort -n | awk '
         function bytes_to_readable(bytes) {
             tb = bytes / (1024*1024*1024*1024)
             if(tb >= 1){
@@ -132,7 +132,7 @@ function ssh-script() {
 }
 
 function cast() {
-    castnow --myip 192.168.1.190 $@
+    castnow --myip 192.168.1.174 $@
 }
 
 
@@ -149,6 +149,7 @@ HISTTIMEFORMAT="%Y-%m-%d %T "
 export GOPATH=~/code/go/gopath
 export PATH=$GOPATH/bin:$PATH
 export PATH=~/bin:$PATH
+export PATH=~/.cargo/bin:$PATH
 export EDITOR=vim
 export TERM=xterm-256color
 # This breaks highlighting searches in less
