@@ -34,5 +34,9 @@
     ls = log --stat --pretty=medium --graph
     dc = log -u -1 --stat
 
+    # Awesome idea taken from https://preslav.me/2020/03/01/use-the-git-history/
+    code-changes = "!git log --format=format: --name-only | grep -Ev '^$' | sort | uniq -c | sort -rg | head -20"
+    cc = "!git code-changes"
+
 [push]
     default = current
